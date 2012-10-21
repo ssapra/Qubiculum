@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Web:</b>
+  <%= @answer.web_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @answer.content %>
+</p>
+
+<p>
+  <b>Votes:</b>
+  <%= @answer.votes %>
+</p>
+
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>

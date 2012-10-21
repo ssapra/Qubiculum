@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Course:</b>
+  <%= @question.section.course.name %>
+</p>
+
+<p>
+  <b>Section:</b>
+  <%= @question.section_id %>
+</p>
+
+<fieldset>
+  <b>Question:</b>
+  <%= @question.title %>
+</fieldset>
+<br />
+<br />
+
+<% if @question.webs %>
+  <% @question.webs.each_with_index do |web,index| %>
+	<fieldset>
+		<%= "Thread ##{index}" %>
+		<% if web.answers %>
+		  <% web.answers.each do |answer| %>
+			<fieldset>
+				<%= "A: #{answer.content} "%>
+			</fieldset>
+		  <% end %>
+		<% else %>
+		<% end %>
+		<br />
+		<br />
+		<%= link_to "Add your Answer", new_answer_path(web_id: web.id, question_id: @question.id) %>
+		<%= link_to "Destroy Thread", destroy_thread_path(question_id: @question.id), method: :delete %>
+	</fieldset>
+  <% end %>
+<% end %>
+
+  
+
+
+<%= link_to "Create New Thread", new_answer_path(question_id: @question.id) %>
+<%#= link_to 'Create New Thread', threads_path(question_id: @question.id), method: :post %>
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', section_path(@question.section) %>

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Course/Section</b>
+  <%= "#{@section.course.name} / #{@section.number}" %>
+</p>
+
+<p>
+  <b>Professor:</b>
+  <%= @section.professor %>
+</p>
+
+
+<fieldset>
+<legend>Questions</legend>
+<ul>
+	<% @section.questions.each do |question| %>
+		<li><%= link_to "#{question.title}", question %></li>
+	<% end %>
+</ul>
+</fieldset>
+
+<br />
+<%= link_to 'Add a New Question', new_question_path(id: @section.id)%>
+<%= link_to 'Edit', edit_section_path(@section) %> |
+<%= link_to 'Back', sections_path %>

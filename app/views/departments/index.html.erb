@@ -1,0 +1,6 @@
+<h2>Departments</h2>
+<ul>
+	<% @departments.each do |department| %>
+		<li><%= link_to "#{department.abrv}", department %></li>
+	<% end %>
+</ul>

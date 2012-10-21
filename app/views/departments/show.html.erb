@@ -1,0 +1,13 @@
+<table>
+	<thead>
+		<tr><td><b>Courses</b></td></tr>
+	</thead>
+	
+	<tbody>
+		<% @department.courses.each do |course| %>
+			<tr><td><%= link_to "#{@department.abrv} #{course.number}", course %></td></tr>
+		<% end %>
+	</tbody>
+</table>
+<br />
+<%= link_to "Back to Departments", departments_path%>
