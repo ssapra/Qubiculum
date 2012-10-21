@@ -53,6 +53,7 @@ class AnswersController < ApplicationController
       @answer.web_id = @web.id
     end
     @question = @answer.question
+    @answer.votes = 0
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @question, notice: 'Answer was successfully created.' }
@@ -62,6 +63,13 @@ class AnswersController < ApplicationController
         format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def vote
+    @answer = Answer.find(params[:answer_id].to_i)
+    votes = @answer.votes + params[:change].to_i
+    @answer.update_attributes(:votes => votes)
+    redirect_to @answer.question
   end
 
   # PUT /answers/1

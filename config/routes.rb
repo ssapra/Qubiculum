@@ -4,6 +4,7 @@ Quibiculum::Application.routes.draw do
 
   post "thread/new" => 'webs#create', :as => :threads
   delete "thread" => 'webs#destroy', :as => :destroy_thread
+  post "vote" => 'answers#vote', :as => :change_value
 
   devise_for :users
   resources :courses

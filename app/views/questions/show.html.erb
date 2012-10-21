@@ -25,6 +25,10 @@
 		  <% web.answers.each do |answer| %>
 			<fieldset>
 				<%= "A: #{answer.content} "%>
+				<%= "Upvotes: #{answer.votes}"%>
+				<%= link_to "+1", change_value_path(:change => 1, :answer_id => answer.id), method: :post %>
+				|
+				<%= link_to "-1", change_value_path(:change => -1, :answer_id => answer.id ), method: :post %>
 			</fieldset>
 		  <% end %>
 		<% else %>
