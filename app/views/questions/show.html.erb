@@ -35,6 +35,7 @@
 				<br />
 				<br />
 				<%= link_to "Add your Answer", new_answer_path(web_id: web.id, question_id: @question.id) %>
+				<%#= link_to "Disagree? Make a sub-thread at this juncture", new_answer_path(web: web.id, question_id: @question.id) %>
 				<%= link_to "Destroy Thread", destroy_thread_path(question_id: @question.id), method: :delete %>
 			</fieldset>
 		</div>
