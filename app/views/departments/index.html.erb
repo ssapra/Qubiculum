@@ -1,6 +1,7 @@
-<h2>Departments</h2>
-<ul>
+
+<table>
+	<th>Departments</th>
 	<% @departments.each do |department| %>
-		<li><%= link_to "#{department.abrv}", department %></li>
+		<tr><td><%= link_to "#{department.abrv}: #{department.name}", department %></td></tr>
 	<% end %>
-</ul>
+</table>

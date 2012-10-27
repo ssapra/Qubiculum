@@ -1,16 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @course.name %>
+  <b>Course</b>
+  <%= "#{@course.name}" %>
 </p>
 
+<fieldset>
+<legend>Questions</legend>
 <ul>
-<% @course.sections.each do |section| %>
-	<li><%= link_to "Section #{section.number}", section%></li>
-<% end %>
+	<% @course.questions.each do |question| %>
+		<li><%= link_to "#{question.title}", question %></li>
+	<% end %>
 </ul>
+</fieldset>
 
+<div id="myCarousel" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="active item">
+    	<!-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0WdZyx27U0XMImkPrJEU5nGv11JzQBCgekmugHWPuMg7G6ZHKgw"> -->
+		<fieldset>lsjdflksjflksjflksdjflskdfjsdlkfj</fieldset>
+    </div>
+    <div class="item">
+    	<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTXasAC1xzUIubzoRrM2unrNLDPl02lVjYxpKggyJQw8sLt18B2Hw">
+    </div>
+    <div class="item">
+    	<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSelVYRSI9aJjIcWW1DAlKQCJc1xZhqxFTQvbEEMDC_Ju82afgX">
+    </div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', department_path(@course.department) %>
+<br />
+<%= link_to 'Add a New Question', new_question_path(id: @course.id)%>

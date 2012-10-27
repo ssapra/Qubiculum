@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new.json
   def new
     @question = Question.new
-    @question.section_id = params[:id]
+    @question.course_id = params[:id]
 
     respond_to do |format|
       format.html # new.html.erb

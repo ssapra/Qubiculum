@@ -2,12 +2,7 @@
 
 <p>
   <b>Course:</b>
-  <%= @question.section.course.name %>
-</p>
-
-<p>
-  <b>Section:</b>
-  <%= @question.section_id %>
+  <%= @question.course.name %>
 </p>
 
 <fieldset>
@@ -18,33 +13,42 @@
 <br />
 
 <% if @question.webs %>
-  <% @question.webs.each_with_index do |web,index| %>
-	<fieldset>
-		<%= "Thread ##{index}" %>
-		<% if web.answers %>
-		  <% web.answers.each do |answer| %>
+  <div id="myCarousel" class="carousel slide">
+	 <!-- Carousel items -->
+	<div class="carousel-inner">
+  	  	<% @question.webs.each_with_index do |web,index| %>
+ 		<div class="item">
 			<fieldset>
-				<%= "A: #{answer.content} "%>
-				<%= "Upvotes: #{answer.votes}"%>
-				<%= link_to "+1", change_value_path(:change => 1, :answer_id => answer.id), method: :post %>
-				|
-				<%= link_to "-1", change_value_path(:change => -1, :answer_id => answer.id ), method: :post %>
+				<%= "Thread ##{index}" %>
+				<% if web.answers %>
+		  			<% web.answers.each do |answer| %>
+						<fieldset>
+							<%= "A: #{answer.content} "%>
+							<%= "Upvotes: #{answer.votes}"%>
+							<%= link_to "+1", change_value_path(:change => 1, :answer_id => answer.id), method: :post %>
+							|
+							<%= link_to "-1", change_value_path(:change => -1, :answer_id => answer.id ), method: :post %>
+						</fieldset>
+		  			<% end %>
+				<% else %>
+				<% end %>
+				<br />
+				<br />
+				<%= link_to "Add your Answer", new_answer_path(web_id: web.id, question_id: @question.id) %>
+				<%= link_to "Destroy Thread", destroy_thread_path(question_id: @question.id), method: :delete %>
 			</fieldset>
-		  <% end %>
-		<% else %>
-		<% end %>
-		<br />
-		<br />
-		<%= link_to "Add your Answer", new_answer_path(web_id: web.id, question_id: @question.id) %>
-		<%= link_to "Destroy Thread", destroy_thread_path(question_id: @question.id), method: :delete %>
-	</fieldset>
-  <% end %>
+		</div>
+  		<% end %>
+	</div>
+	<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+	<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div>
 <% end %>
 
   
 
 
-<%= link_to "Create New Thread", new_answer_path(question_id: @question.id) %>
+<%= link_to "Create New Answer Thread", new_answer_path(question_id: @question.id) %>
 <%#= link_to 'Create New Thread', threads_path(question_id: @question.id), method: :post %>
 <%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', section_path(@question.section) %>
+

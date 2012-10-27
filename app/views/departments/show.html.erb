@@ -1,13 +1,17 @@
 <table>
 	<thead>
-		<tr><td><b>Courses</b></td></tr>
+		<tr><td><b><%= "Courses for #{@department.name}" %></b></td></tr>
 	</thead>
 	
 	<tbody>
 		<% @department.courses.each do |course| %>
-			<tr><td><%= link_to "#{@department.abrv} #{course.number}", course %></td></tr>
+			<tr>
+				<td><%= "#{@department.abrv} #{course.number}"%></td>
+				<td><%= link_to "#{course.name}", course %></td>
+				<td><%= "#{course.questions.count} questions in Quibicle"%></td>
+			</tr>
 		<% end %>
 	</tbody>
 </table>
 <br />
-<%= link_to "Back to Departments", departments_path%>
+<%= link_to "Back to Departments", departments_path %>

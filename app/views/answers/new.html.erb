@@ -2,13 +2,9 @@
 
 <p>
   <b>Course:</b>
-  <%= @question.section.course.name %>
+  <%= @question.course.name %>
 </p>
 
-<p>
-  <b>Section:</b>
-  <%= @question.section_id %>
-</p>
 
 <fieldset>
   <b>Question:</b>
@@ -28,4 +24,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', @question %>
+<%= link_to 'Back to Question', @question %>
